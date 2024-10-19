@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrine de Produits</title>
+    <style>
+        /* Styles existants */
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1em;
+        }
+
+        .product {
+            background-color: white;
+            padding: 1em;
+            margin: 1em 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            flex-direction: row; /* Par défaut en ligne */
+        }
+
+        .product img {
+            width: 150px;
+            margin-right: 1em;
+            border-radius: 8px;
+            max-width: 100%; /* Assure que l'image ne dépasse pas 100% de son conteneur */
+            height: auto; /* Garde le ratio d'aspect */
+        }
+
+        .product h2 {
+            margin: 0;
+        }
+
+        .contact {
+            text-align: center;
+            margin-top: 2em;
+            padding: 1em;
+            background-color: #333;
+            color: white;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 2em;
+        }
+
+        .details {
+            display: none; /* Caché par défaut */
+            margin-top: 1em;
+        }
+
+        /* Media Queries pour la Responsivité */
+        @media (max-width: 768px) {
+            .product {
+                flex-direction: column; /* Empile les éléments sur les petits écrans */
+                align-items: center; /* Centre les éléments */
+            }
+
+            .product img {
+                width: 100%; /* L'image prendra toute la largeur de son conteneur */
+                margin-right: 0; /* Enlève la marge à droite */
+                margin-bottom: 1em; /* Ajoute une marge en bas pour espacer */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Bienvenue dans Ma Boutique</h1>
+</header>
+
+<div class="container">
+    <div class="product" onclick="toggleDetails('details1')">
+        <img src="produit1.jpg" alt="Produit 1">
+        <div>
+            <h2>Produit 1</h2>
+            <p>Prix : 50€</p>
+            <p>Description : Un excellent produit pour vos besoins.</p>
+            <p>Facilite ta vie si tu l'utilise chaque jour.</p>
+        </div>
+    </div>
+    <div class="details" id="details1">
+        <p>Détails supplémentaires pour le Produit 1.</p>
+    </div>
+
+    <div class="product" onclick="toggleDetails('details2')">
+        <img src="produit2.jpg" alt="Produit 2">
+        <div>
+            <h2>Produit 2</h2>
+            <p>Prix : 75€</p>
+            <p>Description : Un autre article formidable.</p>
+            <p>Facilite ta vie si tu l'utilise chaque jour.</p>
+        </div>
+    </div>
+    <div class="details" id="details2">
+        <p>Détails supplémentaires pour le Produit 2.</p>
+    </div>
+
+    <div class="contact">
+        <h2>Intéressé ? Contactez-nous !</h2>
+        <p>📞 Téléphone : <a href="tel:+11234567890" style="color: white;">+1 123-456-7890</a></p>
+        <p>📱 Envoyez-nous un message pour une livraison rapide : <a href="sms:+11234567890" style="color: white;">Envoyer un SMS</a></p>
+    </div>
+</div>
+
+<footer>
+    <p>© 2024 Ma Boutique. Tous droits réservés.</p>
+</footer>
+
+<script>
+    function toggleDetails(id) {
+        const details = document.getElementById(id);
+        details.style.display = details.style.display === 'none' || details.style.display === '' ? 'block' : 'none';
+    }
+</script>
+
+</body>
+</html>
