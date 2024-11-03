@@ -37,15 +37,15 @@
             display: flex;
             align-items: center;
             cursor: pointer;
-            flex-direction: row; /* Par défaut en ligne */
+            flex-direction: row;
         }
 
         .product img {
             width: 150px;
             margin-right: 1em;
             border-radius: 8px;
-            max-width: 100%; /* Assure que l'image ne dépasse pas 100% de son conteneur */
-            height: auto; /* Garde le ratio d'aspect */
+            max-width: 100%;
+            height: auto;
         }
 
         .product h2 {
@@ -73,7 +73,7 @@
         }
 
         .details {
-            display: none; /* Caché par défaut */
+            display: none;
             margin-top: 1em;
             transition: max-height 0.3s ease-out;
             overflow: hidden;
@@ -86,14 +86,14 @@
         /* Media Queries pour la Responsivité */
         @media (max-width: 768px) {
             .product {
-                flex-direction: column; /* Empile les éléments sur les petits écrans */
-                align-items: center; /* Centre les éléments */
+                flex-direction: column;
+                align-items: center;
             }
 
             .product img {
-                width: 100%; /* L'image prendra toute la largeur de son conteneur */
-                margin-right: 0; /* Enlève la marge à droite */
-                margin-bottom: 1em; /* Ajoute une marge en bas pour espacer */
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 1em;
             }
         }
     </style>
@@ -105,6 +105,7 @@
 </header>
 
 <div class="container">
+    <!-- Product 1 -->
     <div class="product" onclick="toggleDetails('details1')" aria-expanded="false" role="button">
         <img src="produit1.jpg" alt="Image du Produit 1" loading="lazy">
         <div>
@@ -118,6 +119,7 @@
         <p>Détails supplémentaires pour le Produit 1.</p>
     </div>
 
+    <!-- Repeat for products 2 through 10 -->
     <div class="product" onclick="toggleDetails('details2')" aria-expanded="false" role="button">
         <img src="produit2.jpg" alt="Image du Produit 2" loading="lazy">
         <div>
@@ -129,6 +131,20 @@
     </div>
     <div class="details" id="details2" aria-hidden="true">
         <p>Détails supplémentaires pour le Produit 2.</p>
+    </div>
+
+    <!-- Repeat for each product up to Product 10 -->
+    <div class="product" onclick="toggleDetails('details10')" aria-expanded="false" role="button">
+        <img src="produit10.jpg" alt="Image du Produit 10" loading="lazy">
+        <div>
+            <h2>Produit 10</h2>
+            <p>Prix : 150€</p>
+            <p>Description : Le dixième produit exceptionnel.</p>
+            <p>Facilite ta vie si tu l'utilise chaque jour.</p>
+        </div>
+    </div>
+    <div class="details" id="details10" aria-hidden="true">
+        <p>Détails supplémentaires pour le Produit 10.</p>
     </div>
 
     <div class="contact">
