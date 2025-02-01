@@ -4,35 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitrine de Produits</title>
-    <meta name="description" content="Découvrez notre boutique de produits pour hommes et femmes. Cliquez pour en savoir plus !">
+    <meta name="description" content="Découvrez notre boutique de produits. Chaque produit facilite votre vie quotidienne. Cliquez pour en savoir plus !">
     <style>
+        /* Styles existants */
+
         body {
             font-family: Arial, Helvetica, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
+
         header {
             background-color: #333;
             color: white;
             text-align: center;
             padding: 1em;
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 1em;
         }
+
         .category {
-            margin-top: 2em;
+            margin-bottom: 2em;
         }
+
         .category h2 {
-            text-align: center;
-            background-color: #444;
+            background-color: #555;
             color: white;
             padding: 0.5em;
             border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
         }
+
+        .products {
+            display: none; /* Hide products by default */
+            margin-top: 1em;
+        }
+
         .product {
             background-color: white;
             padding: 1em;
@@ -44,6 +57,7 @@
             cursor: pointer;
             flex-direction: row;
         }
+
         .product img {
             width: 150px;
             margin-right: 1em;
@@ -51,14 +65,12 @@
             max-width: 100%;
             height: auto;
         }
-        .details {
-            display: none;
-            margin-top: 1em;
+
+        .product h2 {
+            margin: 0;
         }
-        .details.show {
-            display: block;
-        }
-        .contact, footer {
+
+        .contact {
             text-align: center;
             margin-top: 2em;
             padding: 1em;
@@ -66,11 +78,36 @@
             color: white;
             border-radius: 8px;
         }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 2em;
+        }
+
+        .details {
+            display: none;
+            margin-top: 1em;
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+
+        .details.show {
+            display: block;
+        }
+
+        /* Media Queries pour la Responsivité */
         @media (max-width: 768px) {
             .product {
                 flex-direction: column;
                 align-items: center;
             }
+
             .product img {
                 width: 100%;
                 margin-right: 0;
@@ -88,64 +125,104 @@
 <div class="container">
     <!-- Category: MEN -->
     <div class="category">
-        <h2>MEN</h2>
-        <div class="product" onclick="toggleDetails('details1')">
-            <img src="produit1.jpg" alt="Image du Produit 1" loading="lazy">
-            <div>
-                <h2>Produit 1</h2>
-                <p>Prix : 50€</p>
-                <p>Un excellent produit pour vos besoins.</p>
+        <h2 onclick="toggleCategory('men')">HOMMES</h2>
+        <div class="products" id="men-products">
+            <!-- Product 1 -->
+            <div class="product" onclick="toggleDetails('details1')" aria-expanded="false" role="button">
+                <img src="produit1.jpg" alt="Image du Produit 1" loading="lazy">
+                <div>
+                    <h2>Produit 1</h2>
+                    <p>Prix : 50€</p>
+                    <p>Description : Un excellent produit pour vos besoins.</p>
+                    <p>Facilite ta vie si tu l'utilise chaque jour.</p>
+                </div>
             </div>
-        </div>
-        <div class="details" id="details1">
-            <p>Détails supplémentaires pour le Produit 1.</p>
-        </div>
-        
-        <div class="product" onclick="toggleDetails('details2')">
-            <img src="produit2.jpg" alt="Image du Produit 2" loading="lazy">
-            <div>
-                <h2>Produit 2</h2>
-                <p>Prix : 75€</p>
-                <p>Un autre article formidable.</p>
+            <div class="details" id="details1" aria-hidden="true">
+                <p>Détails supplémentaires pour le Produit 1.</p>
             </div>
-        </div>
-        <div class="details" id="details2">
-            <p>Détails supplémentaires pour le Produit 2.</p>
+
+            <!-- Repeat for products 2 through 5 -->
+            <div class="product" onclick="toggleDetails('details2')" aria-expanded="false" role="button">
+                <img src="produit2.jpg" alt="Image du Produit 2" loading="lazy">
+                <div>
+                    <h2>Produit 2</h2>
+                    <p>Prix : 75€</p>
+                    <p>Description : Un autre article formidable.</p>
+                    <p>Facilite ta vie si tu l'utilise chaque jour.</p>
+                </div>
+            </div>
+            <div class="details" id="details2" aria-hidden="true">
+                <p>Détails supplémentaires pour le Produit 2.</p>
+            </div>
+
+            <!-- Repeat for each product up to Product 5 -->
+            <div class="product" onclick="toggleDetails('details5')" aria-expanded="false" role="button">
+                <img src="produit5.jpg" alt="Image du Produit 5" loading="lazy">
+                <div>
+                    <h2>Produit 5</h2>
+                    <p>Prix : 100€</p>
+                    <p>Description : Le cinquième produit exceptionnel.</p>
+                    <p>Facilite ta vie si tu l'utilise chaque jour.</p>
+                </div>
+            </div>
+            <div class="details" id="details5" aria-hidden="true">
+                <p>Détails supplémentaires pour le Produit 5.</p>
+            </div>
         </div>
     </div>
 
     <!-- Category: WOMEN -->
     <div class="category">
-        <h2>WOMEN</h2>
-        <div class="product" onclick="toggleDetails('details11')">
-            <img src="produit11.jpg" alt="Image du Produit 11" loading="lazy">
-            <div>
-                <h2>Produit 11</h2>
-                <p>Prix : 60€</p>
-                <p>Un produit parfait pour les femmes modernes.</p>
+        <h2 onclick="toggleCategory('women')">FEMMES</h2>
+        <div class="products" id="women-products">
+            <!-- Product 6 -->
+            <div class="product" onclick="toggleDetails('details6')" aria-expanded="false" role="button">
+                <img src="produit6.jpg" alt="Image du Produit 6" loading="lazy">
+                <div>
+                    <h2>Produit 6</h2>
+                    <p>Prix : 60€</p>
+                    <p>Description : Un excellent produit pour vos besoins.</p>
+                    <p>Facilite ta vie si tu l'utilise chaque jour.</p>
+                </div>
             </div>
-        </div>
-        <div class="details" id="details11">
-            <p>Détails supplémentaires pour le Produit 11.</p>
-        </div>
+            <div class="details" id="details6" aria-hidden="true">
+                <p>Détails supplémentaires pour le Produit 6.</p>
+            </div>
 
-        <div class="product" onclick="toggleDetails('details12')">
-            <img src="produit12.jpg" alt="Image du Produit 12" loading="lazy">
-            <div>
-                <h2>Produit 12</h2>
-                <p>Prix : 85€</p>
-                <p>Un accessoire élégant et pratique.</p>
+            <!-- Repeat for products 7 through 10 -->
+            <div class="product" onclick="toggleDetails('details7')" aria-expanded="false" role="button">
+                <img src="produit7.jpg" alt="Image du Produit 7" loading="lazy">
+                <div>
+                    <h2>Produit 7</h2>
+                    <p>Prix : 85€</p>
+                    <p>Description : Un autre article formidable.</p>
+                    <p>Facilite ta vie si tu l'utilise chaque jour.</p>
+                </div>
             </div>
-        </div>
-        <div class="details" id="details12">
-            <p>Détails supplémentaires pour le Produit 12.</p>
+            <div class="details" id="details7" aria-hidden="true">
+                <p>Détails supplémentaires pour le Produit 7.</p>
+            </div>
+
+            <!-- Repeat for each product up to Product 10 -->
+            <div class="product" onclick="toggleDetails('details10')" aria-expanded="false" role="button">
+                <img src="produit10.jpg" alt="Image du Produit 10" loading="lazy">
+                <div>
+                    <h2>Produit 10</h2>
+                    <p>Prix : 150€</p>
+                    <p>Description : Le dixième produit exceptionnel.</p>
+                    <p>Facilite ta vie si tu l'utilise chaque jour.</p>
+                </div>
+            </div>
+            <div class="details" id="details10" aria-hidden="true">
+                <p>Détails supplémentaires pour le Produit 10.</p>
+            </div>
         </div>
     </div>
 
     <div class="contact">
         <h2>Intéressé ? Contactez-nous !</h2>
         <p>📞 Téléphone : <a href="tel:+112345678890" style="color: white;">+1 123-456-7990</a></p>
-        <p>📱 Envoyez-nous un message : <a href="sms:+11234567890" style="color: white;">Envoyer un SMS</a></p>
+        <p>📱 Envoyez-nous un message pour une livraison rapide : <a href="sms:+11234567890" style="color: white;">Envoyer un SMS</a></p>
     </div>
 </div>
 
@@ -154,6 +231,11 @@
 </footer>
 
 <script>
+    function toggleCategory(categoryId) {
+        const products = document.getElementById(`${categoryId}-products`);
+        products.style.display = products.style.display === 'block' ? 'none' : 'block';
+    }
+
     function toggleDetails(id) {
         const details = document.getElementById(id);
         const isVisible = details.classList.toggle('show');
