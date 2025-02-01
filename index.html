@@ -64,6 +64,7 @@
             border-radius: 8px;
             max-width: 100%;
             height: auto;
+            cursor: pointer;
         }
 
         .product h2 {
@@ -101,6 +102,30 @@
             display: block;
         }
 
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
         /* Media Queries pour la Responsivité */
         @media (max-width: 768px) {
             .product {
@@ -129,7 +154,7 @@
         <div class="products" id="men-products">
             <!-- Product 1 -->
             <div class="product" onclick="toggleDetails('details1')" aria-expanded="false" role="button">
-                <img src="images/produit1.jpg" alt="Image du Produit 1" loading="lazy">
+                <img src="images/produit1.jpg" alt="Image du Produit 1" loading="lazy" onclick="openModal('images/produit1.jpg')">
                 <div>
                     <h2>Produit 1</h2>
                     <p>Prix : 50$</p>
@@ -143,7 +168,7 @@
 
             <!-- Repeat for products 2 through 5 -->
             <div class="product" onclick="toggleDetails('details2')" aria-expanded="false" role="button">
-                <img src="images/produit2.jpg" alt="Image du Produit 2" loading="lazy">
+                <img src="images/produit2.jpg" alt="Image du Produit 2" loading="lazy" onclick="openModal('images/produit2.jpg')">
                 <div>
                     <h2>Produit 2</h2>
                     <p>Prix : 75€</p>
@@ -157,7 +182,7 @@
 
             <!-- Repeat for each product up to Product 5 -->
             <div class="product" onclick="toggleDetails('details3')" aria-expanded="false" role="button">
-                <img src="images/produit3.jpg" alt="Image du Produit 3" loading="lazy">
+                <img src="images/produit3.jpg" alt="Image du Produit 3" loading="lazy" onclick="openModal('images/produit3.jpg')">
                 <div>
                     <h2>Produit 3</h2>
                     <p>Prix : 100€</p>
@@ -177,7 +202,7 @@
         <div class="products" id="women-products">
             <!-- Product 6 -->
             <div class="product" onclick="toggleDetails('details6')" aria-expanded="false" role="button">
-                <img src="produit6.jpg" alt="Image du Produit 6" loading="lazy">
+                <img src="produit6.jpg" alt="Image du Produit 6" loading="lazy" onclick="openModal('produit6.jpg')">
                 <div>
                     <h2>Produit 6</h2>
                     <p>Prix : 60€</p>
@@ -191,7 +216,7 @@
 
             <!-- Repeat for products 7 through 10 -->
             <div class="product" onclick="toggleDetails('details7')" aria-expanded="false" role="button">
-                <img src="produit7.jpg" alt="Image du Produit 7" loading="lazy">
+                <img src="produit7.jpg" alt="Image du Produit 7" loading="lazy" onclick="openModal('produit7.jpg')">
                 <div>
                     <h2>Produit 7</h2>
                     <p>Prix : 85€</p>
@@ -205,7 +230,7 @@
 
             <!-- Repeat for each product up to Product 10 -->
             <div class="product" onclick="toggleDetails('details10')" aria-expanded="false" role="button">
-                <img src="produit10.jpg" alt="Image du Produit 10" loading="lazy">
+                <img src="produit10.jpg" alt="Image du Produit 10" loading="lazy" onclick="openModal('produit10.jpg')">
                 <div>
                     <h2>Produit 10</h2>
                     <p>Prix : 150€</p>
@@ -226,6 +251,11 @@
     </div>
 </div>
 
+<!-- Modal Overlay -->
+<div class="modal" id="modal" onclick="closeModal()">
+    <img id="modal-image" src="" alt="Enlarged Product Image">
+</div>
+
 <footer>
     <p>© 2024 Ma Boutique. Tous droits réservés.</p>
 </footer>
@@ -241,6 +271,19 @@
         const isVisible = details.classList.toggle('show');
         details.setAttribute('aria-hidden', !isVisible);
         details.previousElementSibling.setAttribute('aria-expanded', isVisible);
+    }
+
+    // Modal Functions
+    function openModal(imageSrc) {
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modal-image');
+        modalImage.src = imageSrc;
+        modal.classList.add('open');
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('modal');
+        modal.classList.remove('open');
     }
 </script>
 
